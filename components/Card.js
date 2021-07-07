@@ -1,41 +1,47 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import Area from './Area'
 
-const Card = (props) => {
+const Card = ({name, area, date}) => {
     return (
-        <View style={styles.card}>
-            <Text style={styles.title}>{props.name}</Text>
-            <Text style={styles.area}>{props.area}</Text>
-            <Text style={styles.date}>Last time: {props.date}</Text>
+        <View style={styles.item}>
+            <View style={styles.card}>
+                <Text style={styles.title}>{name}</Text>
+                <View style={styles.AreasOfTheBody}>
+                    {area.map( area => <Area key={area} area={area}/> )}
+                </View>    
+                <Text style={styles.date}>Last time: {date}</Text>
+            </View>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
+    item: {
+        width: '100%',
+        height: 'auto',
+        alignItems: 'center'
+    },
     card: {
         padding: 10,
         backgroundColor: 'white',
-        height: 150,
+        height: 'auto',
         width: '90%',
-        borderRadius: 10
+        borderRadius: 10,
+        justifyContent:'space-between',
+        marginBottom: 10,
     },
     title: {
         fontSize: 20,
         fontWeight: 'bold',
-    },
-    area:{
-        color: 'white',
-        fontSize: 15,
-        fontWeight: 'bold',
-        backgroundColor: '#434343',
-        borderRadius: 100,
-        alignSelf: 'flex-start',
-        paddingHorizontal: 15,
-        paddingVertical: 5
+        marginBottom: 10
     },
     date:{
         fontSize: 15,
         fontWeight: 'normal',
+    },
+    AreasOfTheBody: {
+        flexDirection: 'row'
     }
 })
 
