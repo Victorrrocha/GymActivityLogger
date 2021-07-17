@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Button, FlatList } from "react-native";
 import Card from '../components/Card';
 import Title from '../components/Title';
 import NewActivityBtn from '../components/NewActivityBtn';
+import { GlobalStyles } from '../styles/GlobalStyles';
 
 const Activities = [
     {
@@ -45,7 +46,7 @@ const Activities = [
 
 const ActivityScreen = ({navigation}) => {
     return(
-        <View style={styles.container}>
+        <View style={GlobalStyles.container}>
             <Title title='Activities'/>
             <FlatList style={styles.list}
                 contentContainerStyle={{  }}
@@ -65,12 +66,6 @@ const ActivityScreen = ({navigation}) => {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#434343',
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-    },
     list: {
         width: '100%',
     }
