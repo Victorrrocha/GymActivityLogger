@@ -8,6 +8,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import ActivityScreen from './screens/ActivityScreen'
 import NewActivityScreen from './screens/NewActivityScreen';
+import ExerciseLoggerScreen from './screens/ExerciseLoggerScreen';
+import HistoryScreen from './screens/HistoryScreen';
 import Header from './components/Header';
 
 const Stack = createStackNavigator()
@@ -24,11 +26,17 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="ActivityScreen"
-                      component={ActivityScreen}
-                      options={statusbar_style}/>
-         <Stack.Screen name="New Activity"
-                      component={NewActivityScreen}
-                      options={ {...statusbar_style, title: 'New Activity'} }/>             
+          component={ActivityScreen}
+          options={statusbar_style} />
+        <Stack.Screen name="New Activity"
+          component={NewActivityScreen}
+          options={{ ...statusbar_style, title: 'New Activity' }} />
+        <Stack.Screen name="ExerciseLogger"
+          component={ExerciseLoggerScreen}
+          options={statusbar_style} />
+         <Stack.Screen name="History"
+          component={HistoryScreen}
+          options={statusbar_style} />
       </Stack.Navigator>
     </NavigationContainer>
   );
