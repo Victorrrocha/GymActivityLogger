@@ -1,10 +1,14 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import Area from './Area'
 
-const Card = ({name, area, date}) => {
+const Card = ({ navigation ,name, area, date }) => {
     return (
-        <View style={styles.item}>
+        <TouchableOpacity
+            style={styles.item}
+            activeOpacity={0.8}
+            onPress={() => navigation.navigate('ExerciseLogger')}
+        >
             <View style={styles.card}>
                 <Text style={styles.title}>{name}</Text>
                 <View style={styles.AreasOfTheBody}>
@@ -12,7 +16,7 @@ const Card = ({name, area, date}) => {
                 </View>    
                 <Text style={styles.date}>Last time: {date}</Text>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 

@@ -2,10 +2,10 @@ import React from 'react'
 import { View, Text, StyleSheet, TextInput } from "react-native";
 import CategoryText from './CategoryText'
 
-const InputName = () => {
+const Input = ({name}) => {
     return (
             <View style={styles.inputArea}>
-                <CategoryText name="Name:"/>
+                <View style={{ width: 95 }}><CategoryText name={`${name}: `}/></View>
                 <View style={styles.inputView}>
                     <TextInput style={styles.input}/>
                 </View>
@@ -17,7 +17,8 @@ const styles = StyleSheet.create({
     inputArea:{
         flexDirection: 'row',
         width: '90%',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginVertical: 5
     },
     inputView:{
         backgroundColor: 'white',
@@ -34,4 +35,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default InputName
+export default Input

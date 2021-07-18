@@ -44,23 +44,24 @@ const Activities = [
     }
 ]
 
-const ActivityScreen = ({navigation}) => {
-    return(
+const ActivityScreen = ({ navigation }) => {
+    return (
         <View style={GlobalStyles.container}>
-            <Title title='Activities'/>
+            <Title title='Activities' />
             <FlatList style={styles.list}
-                contentContainerStyle={{  }}
+                contentContainerStyle={{}}
                 data={Activities}
                 renderItem={(obj) => {
-                    return(
-                        <Card name={obj.item.name}
+                    return (
+                        <Card navigation={navigation}
+                            name={obj.item.name}
                             area={obj.item.area}
                             date={obj.item.date} />
                     )
                 }}
-                keyExtractor={Activities => Activities.id}/>
-                
-            <NewActivityBtn navigation={navigation}/>
+                keyExtractor={Activities => Activities.id} />
+
+            <NewActivityBtn navigation={navigation} />
         </View>
     )
 }

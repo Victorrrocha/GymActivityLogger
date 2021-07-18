@@ -24,7 +24,11 @@ const statusbar_style = {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+         screenOptions={{
+          cardStyle: { backgroundColor: '#434343' }
+        }}
+      >
         <Stack.Screen name="ActivityScreen"
           component={ActivityScreen}
           options={statusbar_style} />

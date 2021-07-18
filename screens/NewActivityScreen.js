@@ -2,17 +2,18 @@ import React, { useState } from 'react'
 import { View, Text, StyleSheet, TextInput, CheckBox, TouchableOpacity } from "react-native";
 import { GlobalStyles } from '../styles/GlobalStyles';
 import Title from '../components/Title';
-import InputName from '../components/InputName';
+import Input from '../components/Input';
 import CategoryText from '../components/CategoryText';
+import FooterButtons from '../components/FooterButtons';
 
-const NewActivityScreen = () => {
+const NewActivityScreen = ({ navigation }) => {
     const [isPernaSelected, setPernaSelected] = useState(false)
     const [isPeitoSelected, setPeitoSelected] = useState(false)
 
     return(
         <View style={GlobalStyles.container}>
             <Title title='New Activity'/>
-            <InputName />
+            <Input name="Name" />
             
             <View style={styles.bodyArea} >
                 <CategoryText name='Body Area:'/>
@@ -33,17 +34,7 @@ const NewActivityScreen = () => {
                     
                 </View>
             </View>
-
-            <View style={styles.buttonsView}>
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Cancel</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Confirm</Text>
-                </TouchableOpacity>
-            </View>
-
+            <FooterButtons navigation={navigation} acceptText="Confirm" />
         </View>
     )
 }
@@ -70,24 +61,6 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 15
     },
-    //--------------------------
-    buttonsView: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignSelf: 'center',
-        width: '90%'
-    },
-    button: {
-        padding: 10,
-        alignSelf: 'flex-end',
-        marginBottom: 20
-    },
-    buttonText:{
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: 'white'
-    }
 })
 
 
