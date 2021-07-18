@@ -64,7 +64,7 @@ const HistoryScreen = () => {
                             </Text>
                             <View style={[styles.cardExerciseContainer,
                                     (obj.item.id % 3 === 0) ? { backgroundColor: '#FFBB87' }
-                                    : (obj.item.id % 2 === 0) ? { backgroundColor: '#DBFF87' }
+                                    : (obj.item.id % 3 === 2) ? { backgroundColor: '#DBFF87' }
                                     : { backgroundColor: '#87FF8F' }
                                     ]}>
                                 <Text style={styles.cardExerciseText}>
