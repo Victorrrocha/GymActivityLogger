@@ -33,7 +33,8 @@ const ExerciseLoggerScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     historyContainer: {
-        padding: 20,
+        paddingHorizontal: 20,
+        paddingBottom: 50,
         width: '100%',
     },
     historyContent: {
@@ -46,6 +47,7 @@ const styles = StyleSheet.create({
     },
     historyText: {
         fontSize: 30,
+        color: '#434343',
     },
     exerciseDetailsContainer: {
         maxWidth: '80%',

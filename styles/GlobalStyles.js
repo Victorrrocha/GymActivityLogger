@@ -6,6 +6,6 @@ export const GlobalStyles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'flex-start',
-        flexDirection: 'column'
+        flexDirection: 'column',
     },
 })

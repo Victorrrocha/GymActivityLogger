@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         width: '90%',
         alignItems: 'center',
-        marginVertical: 5
+        marginBottom: 10
     },
     inputView:{
         backgroundColor: 'white',
