@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
-const FooterButtons = ({ navigation, acceptText }) => {
+const FooterButtons = ({ navigation, acceptText, confirm }) => {
   return (
     <View style={styles.buttonsView}>
       <TouchableOpacity
@@ -11,7 +11,7 @@ const FooterButtons = ({ navigation, acceptText }) => {
         <Text style={styles.buttonText}>Cancel</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={() => confirm()}>
         <Text style={styles.buttonText}>{acceptText}</Text>
       </TouchableOpacity>
     </View>

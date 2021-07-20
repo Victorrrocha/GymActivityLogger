@@ -1,56 +1,57 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { View, Text, StyleSheet, Button, FlatList } from "react-native";
 import Card from '../components/Card';
 import Title from '../components/Title';
 import NewActivityBtn from '../components/NewActivityBtn';
 import { GlobalStyles } from '../styles/GlobalStyles';
 
-const Activities = [
-    {
-        id: '0001',
-        name: 'LegPress',
-        area: ['Pernas', 'Panturrilha'],
-        date: '01/01/2021'
-    },
-    {
-        id: '0002',
-        name: 'Cadeira extensora',
-        area: ['Ombros', 'Peito'],
-        date: '02/02/2021'
-    },
-    {
-        id: '0003',
-        name: 'LegPress',
-        area: ['Pernas', 'Panturrilha'],
-        date: '01/01/2021'
-    },
-    {
-        id: '0004',
-        name: 'Cadeira extensora',
-        area: ['Ombros', 'Peito'],
-        date: '02/02/2021'
-    },
-    {
-        id: '0005',
-        name: 'LegPress',
-        area: ['Pernas', 'Panturrilha'],
-        date: '01/01/2021'
-    },
-    {
-        id: '0006',
-        name: 'Cadeira extensora',
-        area: ['Ombros', 'Peito'],
-        date: '02/02/2021'
-    }
-]
 
 const ActivityScreen = ({ navigation }) => {
+    const [activities, setActivities] = useState([
+        {
+            id: '0001',
+            name: 'LegPress',
+            area: ['Pernas', 'Panturrilha'],
+            date: '01/01/2021'
+        },
+        {
+            id: '0002',
+            name: 'Cadeira extensora',
+            area: ['Ombros', 'Peito'],
+            date: '02/02/2021'
+        },
+        {
+            id: '0003',
+            name: 'LegPress',
+            area: ['Pernas', 'Panturrilha'],
+            date: '01/01/2021'
+        },
+        {
+            id: '0004',
+            name: 'Cadeira extensora',
+            area: ['Ombros', 'Peito'],
+            date: '02/02/2021'
+        },
+        {
+            id: '0005',
+            name: 'LegPress',
+            area: ['Pernas', 'Panturrilha'],
+            date: '01/01/2021'
+        },
+        {
+            id: '0006',
+            name: 'Cadeira extensora',
+            area: ['Ombros', 'Peito'],
+            date: '02/02/2021'
+        }
+    ])
+
     return (
         <View style={GlobalStyles.container}>
             <Title title='Activities' />
             <FlatList style={styles.list}
                 contentContainerStyle={{}}
-                data={Activities}
+                data={activities}
                 renderItem={(obj) => {
                     return (
                         <Card navigation={navigation}
@@ -59,7 +60,7 @@ const ActivityScreen = ({ navigation }) => {
                             date={obj.item.date} />
                     )
                 }}
-                keyExtractor={Activities => Activities.id} />
+                keyExtractor={activities => activities.id} />
 
             <NewActivityBtn navigation={navigation} />
         </View>

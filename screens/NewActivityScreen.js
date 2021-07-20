@@ -7,13 +7,31 @@ import CategoryText from '../components/CategoryText';
 import FooterButtons from '../components/FooterButtons';
 
 const NewActivityScreen = ({ navigation }) => {
+    
+    const [name, setName] = useState('')
     const [isPernaSelected, setPernaSelected] = useState(false)
     const [isPeitoSelected, setPeitoSelected] = useState(false)
 
+    const HandleName = (name) => setName(name)
+
+    const confirm = () => {
+        // Crio e mando um objeto
+        // Volta para a Activity Screen
+        const activity = {
+            id: Math.floor(Math.random() * (100 - 1) ),
+            name,
+            area: [isPeitoSelected ? "Peito" : null, isPernaSelected ? "Perna" : null],
+            date: Date.now()
+        }
+
+        console.log(activity)
+    }
+
     return(
+        <>
         <View style={GlobalStyles.container}>
             <Title title='New Activity'/>
-            <Input name="Name" />
+            <Input name="Name" handleName={HandleName}/>
             
             <View style={styles.bodyArea} >
                 <CategoryText name='Body Area:'/>
@@ -34,8 +52,10 @@ const NewActivityScreen = ({ navigation }) => {
                     
                 </View>
             </View>
-            <FooterButtons navigation={navigation} acceptText="Confirm" />
+            
         </View>
+        <FooterButtons navigation={navigation} acceptText="Confirm" confirm={confirm} />
+        </>
     )
 }
 
