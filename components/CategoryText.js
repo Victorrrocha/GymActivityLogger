@@ -11,7 +11,7 @@ export default function CategoryText({name}) {
 
 const styles = StyleSheet.create({
     field: {
-        fontSize: 20,
+        fontSize: 23,
         color: 'white',
         marginRight: 10
     }

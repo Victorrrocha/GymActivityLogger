@@ -3,32 +3,46 @@ import { View, Text, StyleSheet, TextInput, CheckBox, TouchableOpacity } from "r
 import { GlobalStyles } from '../styles/GlobalStyles';
 import Title from '../components/Title';
 import Input from '../components/Input';
+import AreaToggle from '../components/AreaToggle';
 import CategoryText from '../components/CategoryText';
 import FooterButtons from '../components/FooterButtons';
 
 const NewActivityScreen = ({ navigation }) => {
     
     const [name, setName] = useState('')
-    const [isPernaSelected, setPernaSelected] = useState(false)
-    const [isPeitoSelected, setPeitoSelected] = useState(false)
+
+    const [isCalvesSelected, setCalves] = useState(false)
+    const [isHamstringsSelected, setHamstrings] = useState(false)
+    const [isQuadricepsSelected, setQuadriceps] = useState(false)
+    const [isGlutesSelected, setGlutes] = useState(false)
+    const [isBicepsSelected, setBiceps] = useState(false)
+    const [isTricepsSelected, setTriceps] = useState(false)
+    const [isForearmsSelected, setForearms] = useState(false)
+    const [isTrapeziusSelected, setTrapezius] = useState(false)
+    const [isLatissimusSelected, setLatissimus] = useState(false)
 
     const HandleName = (name) => setName(name)
+    const HandleCalves = () => setCalves(!isCalvesSelected)
+    const HandleHamstrings = () => setHamstrings(!isHamstringsSelected)
+    const HandleQuadriceps = () => setQuadriceps(!isQuadricepsSelected)
+    const HandleGlutes = () => setGlutes(!isGlutesSelected)
+    const HandleBiceps = () => setBiceps(!isBicepsSelected)
+    const HandleTriceps = () => setTriceps(!isTricepsSelected)
+    const HandleForearms = () => setForearms(!isForearmsSelected)
+    const HandleTrapezius = () => setTrapezius(!isTrapeziusSelected)
+    const HandleLatissimus = () => setLatissimus(!isLatissimusSelected)
 
     const confirm = () => {
-        // Crio e mando um objeto
-        // Volta para a Activity Screen
         const activity = {
             id: Math.floor(Math.random() * (100 - 1) ),
             name,
             area: [isPeitoSelected ? "Peito" : null, isPernaSelected ? "Perna" : null],
             date: Date.now()
         }
-
         console.log(activity)
     }
 
     return(
-        <>
         <View style={GlobalStyles.container}>
             <Title title='New Activity'/>
             <Input name="Name" handleName={HandleName}/>
@@ -38,24 +52,33 @@ const NewActivityScreen = ({ navigation }) => {
                 <View style={styles.checkOptContainer}>
 
                     <View style={styles.checkOptRow}>
-                        <View style={styles.checkOpt}>
-                            <CheckBox value={isPernaSelected}
-                                    onValueChange={setPernaSelected}/>
-                            <Text style={styles.itemText}>Perna</Text>
-                        </View>
-                        <View style={styles.checkOpt}>
-                            <CheckBox value={isPeitoSelected}
-                                    onValueChange={setPeitoSelected}/>
-                            <Text style={styles.itemText}>Peito</Text>
-                        </View>
+                        <AreaToggle name="Calves" value={isCalvesSelected} onToggle={HandleCalves}/>
+                        <AreaToggle name="Hamstrings" value={isHamstringsSelected} onToggle={HandleHamstrings}/>
                     </View>
-                    
+
+                    <View style={styles.checkOptRow}>
+                        <AreaToggle name="Quadriceps" value={isQuadricepsSelected} onToggle={HandleQuadriceps}/>
+                        <AreaToggle name="Glutes" value={isGlutesSelected} onToggle={HandleGlutes}/>
+                    </View>
+
+                    <View style={styles.checkOptRow}>
+                        <AreaToggle name="Biceps" value={isBicepsSelected} onToggle={HandleBiceps}/>
+                        <AreaToggle name="Triceps" value={isTricepsSelected} onToggle={HandleTriceps}/>
+                    </View>
+
+                    <View style={styles.checkOptRow}>
+                        <AreaToggle name="Forearms" value={isForearmsSelected} onToggle={HandleForearms}/>
+                        <AreaToggle name="Trapezius" value={isTrapeziusSelected} onToggle={HandleTrapezius}/>
+                    </View>
+
+                    <View style={styles.checkOptRow}>
+                        <AreaToggle name="Latissimus" value={isLatissimusSelected} onToggle={HandleLatissimus}/>
+                    </View>
                 </View>
             </View>
-            
+
+            <FooterButtons navigation={navigation} acceptText="Confirm" confirm={confirm} />
         </View>
-        <FooterButtons navigation={navigation} acceptText="Confirm" confirm={confirm} />
-        </>
     )
 }
 
@@ -70,17 +93,9 @@ const styles = StyleSheet.create({
     },
     checkOptRow: {
         flexDirection: 'row', 
-        justifyContent: 'space-around'        
-    },
-    checkOpt: {
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    itemText: {
-        color: 'white',
-        fontSize: 15
-    },
+        justifyContent: 'space-around',
+        marginTop: 20
+    }
 })
 
 
