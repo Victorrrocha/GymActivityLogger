@@ -2,13 +2,16 @@ import React from 'react'
 import { View, Text, StyleSheet, TextInput } from "react-native";
 import CategoryText from './CategoryText'
 
-const Input = ({name, handleName}) => {
+const Input = ({name, handleName, keyboardType}) => {
     
     return (
             <View style={styles.inputArea}>
                 <View style={{ width: 95 }}><CategoryText name={`${name}: `}/></View>
                 <View style={styles.inputView}>
-                    <TextInput style={styles.input} onChangeText={(event) => handleName(event)}/>
+                    <TextInput
+                        keyboardType={keyboardType}
+                        style={styles.input}
+                        onChangeText={(event) => handleName(event)}/>
                 </View>
             </View>
     )

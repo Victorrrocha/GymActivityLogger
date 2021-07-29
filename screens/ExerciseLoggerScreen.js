@@ -1,12 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Title from '../components/Title';
 import Input from '../components/Input';
 import CategoryText from '../components/CategoryText';
+import AreaToggle from '../components/AreaToggle';
 import FooterButtons from '../components/FooterButtons';
 import { GlobalStyles } from '../styles/GlobalStyles';
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 const ExerciseLoggerScreen = ({ navigation }) => {
+    const [weight, setWeight] = useState('');
+    const [sets, setSets] = useState('');
+    const [reps, setReps] = useState('');
+
+    const [evaluation, setEvaluation] = useState({
+        easy: false,
+        medium: false,
+        hard: false,
+    });
+
+    const handleFinishActivity = () => {
+        console.log(weight, sets, reps, evaluation);
+    }
+
+
     return (
         <View style={GlobalStyles.container}>
             <Title title="Cadeira Flexionadora" />
@@ -21,12 +37,24 @@ const ExerciseLoggerScreen = ({ navigation }) => {
                 </TouchableOpacity>
             </View>
             <View style={styles.exerciseDetailsContainer}>
-                <Input name="Weight" />
-                <Input name="Sets" />
-                <Input name="Reps" />
+                <Input name="Weight" keyboardType="numeric" handleName={event => setWeight(event)} />
+                <Input name="Sets" keyboardType="numeric" handleName={event => setSets(event)} />
+                <Input name="Reps" keyboardType="numeric" handleName={event => setReps(event)} />
                 <CategoryText name="Evaluation:" />
+                <View style={{ flexDirection: 'row', height: 50 }}>
+                <AreaToggle name="e" value={evaluation.easy} onToggle={
+                    () => setEvaluation({ ...false, easy: true })
+                } />
+                <AreaToggle name="m" value={evaluation.medium} onToggle={
+                    () => setEvaluation({ ...false, medium: true })
+                } />
+                <AreaToggle name="h" value={evaluation.hard} onToggle={
+                    () => setEvaluation({ ...false, hard: true })
+                } />
             </View>
-            <FooterButtons navigation={navigation} acceptText="Finish" />
+            </View>
+            <FooterButtons
+                navigation={navigation} acceptText="Finish" confirm={() => handleFinishActivity()} />
         </View>
     )
 }
